@@ -20,6 +20,7 @@ class NotusHtmlCodec extends Codec<Delta, String> {
 class _NotusHtmlEncoder extends Converter<Delta, String> {
   static const kBold = 'strong';
   static const kItalic = 'em';
+  static const kUnderline = 'u';
   static final kSimpleBlocks = <NotusAttribute, String>{
     NotusAttribute.bq: 'blockquote',
     NotusAttribute.ul: 'ul',
@@ -185,6 +186,8 @@ class _NotusHtmlEncoder extends Converter<Delta, String> {
       {bool close = false}) {
     if (attribute == NotusAttribute.bold) {
       _writeBoldTag(buffer, close: close);
+    } else if (attribute == NotusAttribute.underline) {
+      _writeUnderlineTag(buffer, close: close);
     } else if (attribute == NotusAttribute.italic) {
       _writeItalicTag(buffer, close: close);
     } else if (attribute.key == NotusAttribute.link.key) {
@@ -202,6 +205,10 @@ class _NotusHtmlEncoder extends Converter<Delta, String> {
 
   void _writeBoldTag(StringBuffer buffer, {bool close = false}) {
     buffer.write(!close ? "<$kBold>" : "</$kBold>");
+  }
+
+  void _writeUnderlineTag(StringBuffer buffer, {bool close = false}) {
+    buffer.write(!close ? "<$kUnderline>" : "</$kUnderline>");
   }
 
   void _writeItalicTag(StringBuffer buffer, {bool close = false}) {
