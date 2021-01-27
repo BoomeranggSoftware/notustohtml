@@ -375,6 +375,9 @@ class _NotusHtmlDecoder extends Converter<String, Delta> {
       if (element.localName == "strong") {
         attributes["b"] = true;
       }
+      if (element.localName == "u") {
+        attributes["u"] = true;
+      }
       if (element.localName == "a") {
         attributes["a"] = element.attributes["href"];
       }
