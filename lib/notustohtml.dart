@@ -425,6 +425,7 @@ class _NotusHtmlDecoder extends Converter<String, Delta> {
     "div": "block",
     "em": "inline",
     "strong": "inline",
+    "u": "inline",
     "a": "inline",
     "p": "block",
     "img": "embed",
