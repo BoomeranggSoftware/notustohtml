@@ -348,7 +348,7 @@ class _NotusHtmlDecoder extends Converter<String, Delta> {
             isNewLine: element.localName == "li" || element.localName == "p" || element.localName == "div", inBlock: blockAttributes);
       });
       if (inBlock == null) {
-        delta..insert("\n", blockAttributes);
+        delta..insert("\n");
       }
       return delta;
     } else if (type == "embed") {
