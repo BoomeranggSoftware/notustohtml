@@ -390,7 +390,7 @@ class _NotusHtmlDecoder extends Converter<String, Delta> {
           if (next != null &&
               next.runtimeType == Element &&
               next.localName == "br") {
-            delta..insert(element.text + "\n", attributes);
+            delta..insert(element.text, attributes)..insert("\n");
           } else {
             delta..insert(element.text, attributes);
           }
@@ -425,7 +425,7 @@ class _NotusHtmlDecoder extends Converter<String, Delta> {
     "div": "block",
     "em": "inline",
     "strong": "inline",
-    "u": "inline",
+    "uit": "inline",
     "a": "inline",
     "p": "block",
     "img": "embed",
